@@ -64,7 +64,7 @@ This section provides an overview of the **key components of LlamaIndex**, a pow
 
 ## Data Loaders  
 
-Data Loaders allow us to ingest **various types of data** into LlamaIndex.  
+This section provides utilities for loading and processing various data formats into your application. Data loaders handle different file types and sources with a consistent interface, making it easy to work with diverse data.
 
 - **PDF Loader** – Extracts text from PDFs.  
 - **CSV Loader** – Reads structured tabular data.  
@@ -72,6 +72,45 @@ Data Loaders allow us to ingest **various types of data** into LlamaIndex.
 - **Directory Loader** – Batch-loads multiple files.  
 
 ![dl](https://i.imgur.com/A7goK2X.png)
+
+### Loading PDF Files
+
+The PDF Loader is used to extract text from PDF files, converting unstructured text data into a usable format for further processing. PDFs often contain important documents like research papers, articles, and books. This loader reads the content of the PDF, stripping out unnecessary formatting and retaining the actual text for analysis.  
+
+
+```python
+from llama_index.readers.file import PDFReader
+documents = loader.load_data(file=Path('data.pdf'))
+```
+
+### Loading CSV Files
+
+It enables you to read structured tabular data stored in CSV files. It converts rows and columns into structured data that can be used for further analysis. Whether it's sales data, user information, or research datasets, CSV files are widely used for storing **structured data**, and this loader makes it easy to import them into your workflow.  
+
+```python
+from llama_index.readers.file import CSVReader
+documents = loader.load_data(file=Path('data.csv'))
+```
+
+### Loading Web Page
+
+The Web Page Loader fetches content from web pages and processes them for further analysis. It extracts the text, images, and links from the webpage, transforming them into a structured format for indexing and retrieval. This loader is highly useful for scraping websites and gathering real-time data, such as news articles, blogs, and product pages.  
+
+
+```python
+from llama_index.readers.web import UnstructuredURLLoader
+loader = UnstructuredURLLoader(urls=['https://abc.com/blog/abc'])
+```
+
+### Reading From a Directory
+
+The Directory Loader allows you to load multiple files from a specified directory into your data pipeline. This is particularly useful when you have a collection of documents or files stored locally in a folder. The loader will automatically read through all files in the directory, process them, and prepare the content for indexing.  
+
+
+```python
+from llama_index.core import SimpleDirectoryReader
+documents = SimpleDirectoryReader('/data').load_data()
+```
 
 
 ## Embeddings  
