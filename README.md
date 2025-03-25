@@ -191,9 +191,11 @@ The **Query Engine** brings everything together, allowing users to query indexed
 
 🔹 **Use case:** **Power search engines, chatbots, and knowledge-based applications.**  
 
+<!--
 ## 🚀 Getting Started  
 
 ### 📌 Install Dependencies  
 
 ```bash
 pip install llama-index pinecone-client chromadb
+-->
